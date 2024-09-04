@@ -34,7 +34,11 @@ class Message(models.Model):
         User, on_delete=models.CASCADE, related_name="sent_messages"
     )
     receiver = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="received_messages"
+        User,
+        on_delete=models.CASCADE,
+        related_name="received_messages",
+        null=True,
+        blank=True,
     )
     is_read = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
